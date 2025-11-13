@@ -120,7 +120,7 @@ extension CasePathableMacro: MemberMacro {
       """,
       """
       public static var allCasePaths: AllCasePaths { AllCasePaths() }
-      """
+      """,
     ]
 
     if elementRewriter.didRewriteElement {
@@ -171,9 +171,10 @@ extension CasePathableMacro: MemberMacro {
             return []
           }
           let title = "\(decl.poundKeyword.text) \(decl.condition?.description ?? "")"
-          return [title] + generateDeclSyntax(
-            from: elements, enumName: enumName, elementRewriter: elementRewriter
-          )
+          return [title]
+            + generateDeclSyntax(
+              from: elements, enumName: enumName, elementRewriter: elementRewriter
+            )
         }
         return ifClauses + ["#endif"]
       }
